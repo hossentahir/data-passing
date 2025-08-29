@@ -23,14 +23,13 @@ $conn->close();
 ?> -->
 
 <?php
-$conn = new mysqli("localhost", "root", "", "simpledb");
+$conn = new mysqli("localhost", "root", "", "simpledb", 3306);
 
 $username = $_POST['username'];  
 $email = $_POST['email'];
 
 $sql = "INSERT INTO users (username, email) VALUES ('$username', '$email')";
-$results = $conn->query("SELECT * FROM users"); 
-echo $results->num_rows; 
+ 
 if ($conn->query($sql) === TRUE) {
     echo "<h2>Data Saved Successfully!</h2>";
     echo '<a href="view.php">See All Users</a>';
